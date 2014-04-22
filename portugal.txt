@@ -1,0 +1,496 @@
+Aveiro
+735790
+Beja
+150287
+Braga
+848185
+Bragança
+139344
+Castelo Branco
+225916
+Coimbra
+429714
+Évora
+168034
+Faro
+434023
+Guarda
+168898
+Leiria
+470895
+Lisboa
+2244799
+Portalegre
+118952
+Porto
+2027191
+Santarém
+465701
+Setúbal
+866794
+Viana do Castelo
+250390
+Vila Real
+213775
+Viseu
+391215
+Connections
+Aveiro
+Beja
+395
+Aveiro
+Braga
+126
+Aveiro
+Bragança
+284
+Aveiro
+Castelo Branco
+196
+Aveiro
+Coimbra
+63
+Aveiro
+Évora
+351
+Aveiro
+Faro
+494
+Aveiro
+Guarda
+159
+Aveiro
+Leiria
+123
+Aveiro
+Lisboa
+254
+Aveiro
+Portalegre
+234
+Aveiro
+Porto
+77
+Aveiro
+Santarém
+186
+Aveiro
+Setúbal
+295
+Aveiro
+Viana do Castelo
+148
+Aveiro
+Vila Real
+160
+Aveiro
+Viseu
+87
+Beja
+Braga
+499
+Beja
+Bragança
+540
+Beja
+Castelo Branco
+271
+Beja
+Coimbra
+339
+Beja
+Évora
+80
+Beja
+Faro
+147
+Beja
+Guarda
+366
+Beja
+Leiria
+284
+Beja
+Lisboa
+176
+Beja
+Portalegre
+182
+Beja
+Porto
+450
+Beja
+Santarém
+211
+Beja
+Setúbal
+143
+Beja
+Viana do Castelo
+521
+Beja
+Vila Real
+515
+Beja
+Viseu
+425
+Braga
+Bragança
+222
+Braga
+Castelo Branco
+306
+Braga
+Coimbra
+172
+Braga
+Évora
+461
+Braga
+Faro
+604
+Braga
+Guarda
+251
+Braga
+Leiria
+236
+Braga
+Lisboa
+364
+Braga
+Portalegre
+344
+Braga
+Porto
+58
+Braga
+Santarém
+296
+Braga
+Setúbal
+399
+Braga
+Viana do Castelo
+62
+Braga
+Vila Real
+117
+Braga
+Viseu
+178
+Bragança
+Castelo Branco
+273
+Bragança
+Coimbra
+279
+Bragança
+Évora
+463
+Bragança
+Faro
+725
+Bragança
+Guarda
+177
+Bragança
+Leiria
+357
+Bragança
+Lisboa
+485
+Bragança
+Portalegre
+361
+Bragança
+Porto
+213
+Bragança
+Santarém
+417
+Bragança
+Setúbal
+520
+Bragança
+Viana do Castelo
+279
+Bragança
+Vila Real
+117
+Bragança
+Viseu
+198
+Castelo Branco
+Coimbra
+137
+Castelo Branco
+Évora
+194
+Castelo Branco
+Faro
+462
+Castelo Branco
+Guarda
+99
+Castelo Branco
+Leiria
+166
+Castelo Branco
+Lisboa
+222
+Castelo Branco
+Portalegre
+93
+Castelo Branco
+Porto
+256
+Castelo Branco
+Santarém
+154
+Castelo Branco
+Setúbal
+257
+Castelo Branco
+Viana do Castelo
+327
+Castelo Branco
+Vila Real
+273
+Castelo Branco
+Viseu
+172
+Coimbra
+Évora
+304
+Coimbra
+Faro
+447
+Coimbra
+Guarda
+167
+Coimbra
+Leiria
+80
+Coimbra
+Lisboa
+207
+Coimbra
+Portalegre
+175
+Coimbra
+Porto
+123
+Coimbra
+Santarém
+139
+Coimbra
+Setúbal
+242
+Coimbra
+Viana do Castelo
+195
+Coimbra
+Vila Real
+182
+Coimbra
+Viseu
+92
+Évora
+Faro
+227
+Évora
+Guarda
+288
+Évora
+Leiria
+239
+Évora
+Lisboa
+132
+Évora
+Portalegre
+103
+Évora
+Porto
+405
+Évora
+Santarém
+166
+Évora
+Setúbal
+99
+Évora
+Viana do Castelo
+476
+Évora
+Vila Real
+470
+Évora
+Viseu
+380
+Faro
+Guarda
+552
+Faro
+Leiria
+385
+Faro
+Lisboa
+277
+Faro
+Portalegre
+382
+Faro
+Porto
+551
+Faro
+Santarém
+312
+Faro
+Setúbal
+244
+Faro
+Viana do Castelo
+622
+Faro
+Vila Real
+616
+Faro
+Viseu
+526
+Guarda
+Leiria
+262
+Guarda
+Lisboa
+318
+Guarda
+Portalegre
+189
+Guarda
+Porto
+201
+Guarda
+Santarém
+251
+Guarda
+Setúbal
+354
+Guarda
+Viana do Castelo
+273
+Guarda
+Vila Real
+177
+Guarda
+Viseu
+75
+Leiria
+Lisboa
+148
+Leiria
+Portalegre
+174
+Leiria
+Porto
+187
+Leiria
+Santarém
+81
+Leiria
+Setúbal
+181
+Leiria
+Viana do Castelo
+259
+Leiria
+Vila Real
+253
+Leiria
+Viseu
+163
+Lisboa
+Portalegre
+229
+Lisboa
+Porto
+314
+Lisboa
+Santarém
+80
+Lisboa
+Setúbal
+49
+Lisboa
+Viana do Castelo
+385
+Lisboa
+Vila Real
+379
+Lisboa
+Viseu
+289
+Portalegre
+Porto
+293
+Portalegre
+Santarém
+162
+Portalegre
+Setúbal
+194
+Portalegre
+Viana do Castelo
+365
+Portalegre
+Vila Real
+361
+Portalegre
+Viseu
+260
+Porto
+Santarém
+247
+Porto
+Setúbal
+349
+Porto
+Viana do Castelo
+75
+Porto
+Vila Real
+98
+Porto
+Viseu
+129
+Santarém
+Setúbal
+114
+Santarém
+Viana do Castelo
+317
+Santarém
+Vila Real
+311
+Santarém
+Viseu
+221
+Setúbal
+Viana do Castelo
+422
+Setúbal
+Vila Real
+416
+Setúbal
+Viseu
+326
+Viana do Castelo
+Vila Real
+173
+Viana do Castelo
+Viseu
+200
+Vila Real
+Viseu
+97
