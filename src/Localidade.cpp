@@ -11,18 +11,21 @@ Localidade::Localidade() {
 	this->nome = "";
 	this->populacao = 0;
 	this->unidadeSaude = false;
+  id = 0;
 }
 
-Localidade::Localidade(std::string nome, int populacao) {
+Localidade::Localidade(int id, std::string nome, int populacao) {
 	this->nome = nome;
 	this->populacao = populacao;
 	this->unidadeSaude = false;
+  this->id = id;
 }
 
-Localidade::Localidade(std::string nome, int populacao, bool unidadeSaude) {
+Localidade::Localidade(int id, std::string nome, int populacao, bool unidadeSaude) {
 	this->nome = nome;
 	this->populacao = populacao;
 	this->unidadeSaude = unidadeSaude;
+  this->id = id;
 }
 
 std::string Localidade::getNome() const {
@@ -51,6 +54,10 @@ void Localidade::setUnidadeSaude(bool unidadeSaude) {
 
 bool Localidade::operator == (const Localidade &l) const {
 	return (this->nome == l.nome && this->populacao == l.populacao && this->unidadeSaude == l.unidadeSaude);
+}
+
+int Localidade::getID() const {
+  return id;
 }
 
 //Localidade::~Localidade() {

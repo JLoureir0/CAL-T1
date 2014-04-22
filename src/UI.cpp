@@ -9,11 +9,6 @@
 
 using namespace std;
 
-UI::UI() {
-	this->fr = FileReader();
-}
-
-
 UI::UI(FileReader fr) {
 	this->fr = fr;
 }

@@ -47,14 +47,12 @@ public:
 	Vertex* path;
 };
 
-
 template <class T>
 struct vertex_greater_than {
     bool operator()(Vertex<T> * a, Vertex<T> * b) const {
         return a->getDist() > b->getDist();
     }
 };
-
 
 template <class T>
 bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
@@ -77,7 +75,6 @@ Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0
 	path = NULL;
 }
 
-
 template <class T>
 void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
 	Edge<T> edgeD(dest,w);
@@ -94,7 +91,6 @@ template <class T>
 int Vertex<T>::getDist() const {
 	return this->dist;
 }
-
 
 template <class T>
 void Vertex<T>::setInfo(T info) {
@@ -171,7 +167,6 @@ public:
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 };
-
 
 template <class T>
 int Graph<T>::getNumVertex() const {

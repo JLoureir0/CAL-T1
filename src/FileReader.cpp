@@ -11,15 +11,17 @@
 using namespace std;
 
 FileReader::FileReader() {
-	this->path = "";
-	this->fileDividor = "Connections";
-	this->graph = Graph<Localidade>();
-}
+  graphviewer = new GraphViewer(600,600,true);
+  graphviewer->setBackground("background.jpg");
+  graphviewer->createWindow(600, 600);
+  graphviewer->defineVertexColor("blue");
+  graphviewer->defineEdgeColor("black");
 
-FileReader::FileReader(string path) {
-	this->path = path;
-	this->fileDividor = "Connections";
-	this->graph = Graph<Localidade>();
+  this->path = "";
+  this->fileDividor = "Connections";
+  this->graph = Graph<Localidade>();
+
+  vertexID = 0;
 }
 
 void FileReader::setPath(string path) {
@@ -49,6 +51,8 @@ void FileReader::createEdge(string localidade1, string localidade2, double weigh
 		}
 	}
 	cout << "before addEdge" << endl;
+  int edgeID = source.getID()*10 + destiny.getID();
+  graphviewer->addEdge(edgeID, source.getID(), destiny.getID(), EdgeType::UNDIRECTED);
 	this->graph.addEdge(source,destiny,weight);
 	cout << "after addEdge" << endl;
 }
@@ -84,7 +88,12 @@ void FileReader::readFile() {
 				string name = ""+line;
 				getline(file,population);
 				cout << "Localidade: " << name << " " << population << endl;
-				Localidade l = Localidade(name,atof(population.c_str()));
+				Localidade l = Localidade(vertexID,name,atof(population.c_str()));
+
+        graphviewer->addNode(l.getID());
+        graphviewer->setVertexLabel(l.getID(),name);
+        sleep(1);
+
 				this->graph.addVertex(l);
 				this->localidades.push_back(l);
 				cout << "end of else" << endl;
@@ -97,6 +106,3 @@ void FileReader::readFile() {
 		exit(1);
 	}
 }
-
-
-

@@ -19,7 +19,6 @@ using namespace std;
 
 class UI {
 public:
-	UI();
 	UI(FileReader fr);
 //	virtual ~UI();
 	void mainMenu();

@@ -13,11 +13,11 @@
 #include <vector>
 #include "Graph.h"
 #include "Localidade.h"
+#include "graphviewer.h"
 
 class FileReader {
 public:
-	FileReader();
-	FileReader(std::string path);
+  FileReader();
 //	virtual ~FileReader();
 	void readFile();
 	void setPath(std::string path);
@@ -25,6 +25,8 @@ public:
 	void addLocalidades();
 	void createEdge(string localidade1, string localidade2, double dist);
 private:
+  int vertexID;
+  GraphViewer *graphviewer;
 	std::string path;
 	std::string fileDividor;
 	Graph<Localidade> graph;

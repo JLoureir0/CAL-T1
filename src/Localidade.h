@@ -13,8 +13,8 @@
 class Localidade {
 public:
 	Localidade();
-	Localidade(std::string nome, int populacao);
-	Localidade(std::string nome, int populacao, bool unidadeSaude);
+	Localidade(int id, std::string nome, int populacao);
+	Localidade(int id, std::string nome, int populacao, bool unidadeSaude);
 //	virtual ~Localidade();
 	std::string getNome() const;
 	void setNome(const std::string& nome);
@@ -22,8 +22,10 @@ public:
 	void setPopulacao(int populacao);
 	bool isUnidadeSaude() const;
 	void setUnidadeSaude(bool unidadeSaude);
-    bool operator == (const Localidade &l) const;
+  bool operator == (const Localidade &l) const;
+  int getID() const;
 private:
+  int id;
 	std::string nome;
 	int populacao;
 	bool unidadeSaude;
