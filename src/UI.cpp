@@ -9,7 +9,7 @@
 
 using namespace std;
 
-UI::UI(FileReader fr) {
+UI::UI(FileReader* fr) {
 	this->fr = fr;
 }
 
@@ -76,8 +76,8 @@ void UI::getFilePath() {
 	cout << "Insira o nome ou caminho do ficheiro a ler \n";
 	string path;
 	cin >> path;
-	fr.setPath(path);
-	fr.readFile();
+	fr->setPath(path);
+	fr->readFile();
 }
 
 void UI::minimizeUnitsMenu() {

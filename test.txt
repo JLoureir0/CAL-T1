@@ -20,6 +20,15 @@ Lamego
 Lamego
 Trofa
 170
+Porto
+Lisboa
+300
 Rio Tinto
 Trofa
 60
+Lamego
+Lisboa
+300
+Lamego
+Porto
+120

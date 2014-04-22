@@ -19,14 +19,14 @@ using namespace std;
 
 class UI {
 public:
-	UI(FileReader fr);
+	UI(FileReader* fr);
 //	virtual ~UI();
 	void mainMenu();
 	void distributeUnitMenu();
 	void getFilePath();
 	void minimizeUnitsMenu();
 private:
-	FileReader fr;
+	FileReader* fr;
 };
 
 #endif
