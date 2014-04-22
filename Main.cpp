@@ -17,8 +17,8 @@ int main() {
 	UI* userInterface = new UI(fr);
 	userInterface->mainMenu();
 	graph = fr.getGraph();
-	fr.~FileReader();
-	userInterface->~UI();
+	//fr.~FileReader();
+	//userInterface->~UI();
 	return 0;
 }
 

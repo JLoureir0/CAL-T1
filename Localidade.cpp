@@ -53,9 +53,9 @@ bool Localidade::operator == (const Localidade &l) const {
 	return (this->nome == l.nome && this->populacao == l.populacao && this->unidadeSaude == l.unidadeSaude);
 }
 
-Localidade::~Localidade() {
-	delete(&nome);
-	delete(&populacao);
-	delete(&unidadeSaude);
-}
+//Localidade::~Localidade() {
+//	delete(&nome);
+//	delete(&populacao);
+//	delete(&unidadeSaude);
+//}
 

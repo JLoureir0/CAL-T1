@@ -30,12 +30,12 @@ Graph<Localidade> FileReader::getGraph() {
 	return graph;
 }
 
-FileReader::~FileReader() {
-	delete(&path);
-	delete(&fileDividor);
-	delete(&graph);
-	delete(&localidades);
-}
+//FileReader::~FileReader() {
+//	delete(&path);
+//	delete(&fileDividor);
+//	delete(&graph);
+//	delete(&localidades);
+//}
 
 void FileReader::createEdge(string localidade1, string localidade2, double weight) {
 	Localidade source;

@@ -21,7 +21,7 @@ class UI {
 public:
 	UI();
 	UI(FileReader fr);
-	virtual ~UI();
+//	virtual ~UI();
 	void mainMenu();
 	void distributeUnitMenu();
 	void getFilePath();

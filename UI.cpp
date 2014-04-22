@@ -18,16 +18,16 @@ UI::UI(FileReader fr) {
 	this->fr = fr;
 }
 
-UI::~UI() {
-	delete(&fr);
-}
+//UI::~UI() {
+//	delete(&fr);
+//}
 
 void UI::mainMenu() {
 
 	while(true) {
 		cout << "*********** Menu ********** \n";
 		cout << "1 -> Distruibuir unidades de saude \n";
-		cout << "2 -> Minimizar a distancia media para deslocação a uma unidade de saúde sabendo o numero de unidades de saude \n";
+		cout << "2 -> Minimizar a distancia media para deslocaï¿½ï¿½o a uma unidade de saï¿½de sabendo o numero de unidades de saude \n";
 		cout << "3 -> Exit \n";
 		cout << "Insira a opcao que pretende: ";
 

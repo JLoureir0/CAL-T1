@@ -15,7 +15,7 @@ public:
 	Localidade();
 	Localidade(std::string nome, int populacao);
 	Localidade(std::string nome, int populacao, bool unidadeSaude);
-	virtual ~Localidade();
+//	virtual ~Localidade();
 	std::string getNome() const;
 	void setNome(const std::string& nome);
 	int getPopulacao() const;
