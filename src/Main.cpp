@@ -20,6 +20,7 @@ int main() {
 	graph = fr.getGraph();
 	cout << endl << endl;
 	cout << "*** Graph Nodes ***" << endl;
+	graph.drawGraph();
 	printNodes();
 	std::string merda;
 	cin >> merda;

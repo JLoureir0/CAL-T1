@@ -11,16 +11,9 @@
 using namespace std;
 
 FileReader::FileReader() {
-  graphviewer = new GraphViewer(WINDOW_WIDTH,WINDOW_HEIGHT,true);
-  graphviewer->setBackground("background.jpg");
-  graphviewer->defineVertexColor("blue");
-  graphviewer->defineEdgeColor("black");
-
   path = "";
   fileDividor = "Connections";
   graph = Graph<Localidade>();
-  vertexID = 0;
-  edgeID = 0;
 }
 
 void FileReader::setPath(string path) {
@@ -49,8 +42,6 @@ void FileReader::createEdge(string localidade1, string localidade2, string weigh
 		}
 	}
 	cout << "before addEdge" << endl;
-	graphviewer->addEdge(edgeID, source.getID(), destiny.getID(),EdgeType::UNDIRECTED);
-	graphviewer->setEdgeLabel(edgeID, weight);
 	this->graph.addEdge(source, destiny, atof(weight.c_str()));
 	cout << "after addEdge" << endl;
 }
@@ -61,8 +52,6 @@ void FileReader::readFile() {
 	string nomeRegiao;
 	ifstream file(path.c_str());
 	bool readingConnections = false;
-
-	graphviewer->createWindow(WINDOW_WIDTH,WINDOW_HEIGHT);
 
 	if (file.is_open()) {
 		while (getline(file, line)) {
@@ -76,7 +65,6 @@ void FileReader::readFile() {
 				getline(file, dist);
 				cout << "going to create edge" << endl;
 				createEdge(localidade1, localidade2, dist);
-				edgeID++;
 				cout << "end of if" << endl;
 			} else if (line == this->fileDividor) {
 				readingConnections = true;
@@ -87,11 +75,8 @@ void FileReader::readFile() {
 				string name = "" + line;
 				getline(file, population);
 				cout << "Localidade: " << name << " " << population << endl;
-				Localidade l = Localidade(vertexID, name, atol(population.c_str()));
-				vertexID++;
+				Localidade l = Localidade(name, atol(population.c_str()));
 
-				graphviewer->addNode(l.getID());
-				graphviewer->setVertexLabel(l.getID(),name);
 				this->graph.addVertex(l);
 				this->localidades.push_back(l);
 				cout << "end of else" << endl;
@@ -103,5 +88,4 @@ void FileReader::readFile() {
 		cout << "Unable to open file \n";
 		exit(1);
 	}
-	graphviewer->rearrange();
 }

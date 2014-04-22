@@ -11,6 +11,10 @@
 #include <limits.h>
 #include <cmath>
 #include <stdio.h>
+#include <sstream>
+
+#include "Constants.h"
+
 using namespace std;
 
 template<class T> class Edge;
@@ -69,7 +73,7 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 	return false;
 }
 
-//atualizado pelo exercício 5
+//atualizado pelo exercï¿½cio 5
 template<class T>
 Vertex<T>::Vertex(T in) :
 		info(in), visited(false), processing(false), indegree(0), dist(0) {
@@ -169,7 +173,48 @@ public:
 	int edgeCost(int vOrigIndex, int vDestIndex);
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
+
+	void drawGraph() const;
 };
+
+template<class T>
+void Graph<T>::drawGraph() const {
+	GraphViewer *graphviewer = new GraphViewer(WINDOW_WIDTH,WINDOW_HEIGHT,true);
+	int vertexID = 0;
+	int edgeID = 0;
+
+	graphviewer->createWindow(WINDOW_WIDTH,WINDOW_HEIGHT);
+	graphviewer->setBackground("background.jpg");
+	graphviewer->defineVertexColor("blue");
+	graphviewer->defineEdgeColor("black");
+
+	typename vector<Vertex<T> *>::const_iterator it = vertexSet.begin();
+	typename vector<Vertex<T> *>::const_iterator ite = vertexSet.end();
+	for(;it != ite; it++) {
+		graphviewer->addNode(vertexID);
+		graphviewer->setVertexLabel(vertexID,(*it)->info.getNome());
+		vertexID++;
+	}
+
+	for(int i=0; i < vertexSet.size(); i++) {
+		typename vector<Edge<T> >::const_iterator ited = vertexSet[i]->adj.begin();
+		typename vector<Edge<T> >::const_iterator itede = vertexSet[i]->adj.end();
+		for(;ited != itede; ited++) {
+			for(int j = 0; vertexSet.size();j++) {
+				if((*ited).dest->info == vertexSet[j]->info) {
+					graphviewer->addEdge(edgeID, i, j,EdgeType::UNDIRECTED);
+
+					ostringstream weight;
+					weight << ((*ited).weight);
+					graphviewer->setEdgeLabel(edgeID, weight.str());
+					edgeID++;
+					break;
+				}
+			}
+		}
+	}
+	graphviewer->rearrange();
+}
 
 template<class T>
 int Graph<T>::getNumVertex() const {
@@ -433,7 +478,7 @@ vector<T> Graph<T>::topologicalOrder() {
 	//vetor com o resultado da ordenacao
 	vector<T> res;
 
-	//verificar se é um DAG
+	//verificar se ï¿½ um DAG
 	if (getNumCycles() > 0) {
 		cout << "Ordenacao Impossivel!" << endl;
 		return res;
@@ -556,7 +601,7 @@ void Graph<T>::dijkstraShortestPath(const T &s) {
 				w->dist = v->dist + v->adj[i].weight;
 				w->path = v;
 
-				//se já estiver na lista, apenas a actualiza
+				//se jï¿½ estiver na lista, apenas a actualiza
 				if (!w->processing) {
 					w->processing = true;
 					pq.push_back(w);

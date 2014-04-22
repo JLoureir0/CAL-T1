@@ -13,8 +13,8 @@
 class Localidade {
 public:
 	Localidade();
-	Localidade(int id, std::string nome, unsigned long populacao);
-	Localidade(int id, std::string nome, unsigned long populacao, bool unidadeSaude);
+	Localidade(std::string nome, unsigned long populacao);
+	Localidade(std::string nome, unsigned long populacao, bool unidadeSaude);
 	std::string getNome() const;
 	void setNome(const std::string& nome);
 	unsigned long getPopulacao() const;
@@ -22,9 +22,7 @@ public:
 	bool isUnidadeSaude() const;
 	void setUnidadeSaude(bool unidadeSaude);
 	bool operator ==(const Localidade &l) const;
-	int getID() const;
 private:
-	int id;
 	std::string nome;
 	unsigned long populacao;
 	bool unidadeSaude;

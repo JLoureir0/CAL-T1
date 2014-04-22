@@ -24,9 +24,6 @@ public:
 	void addLocalidades();
 	void createEdge(string localidade1, string localidade2, string dist);
 private:
-	int vertexID;
-	int edgeID;
-	GraphViewer *graphviewer;
 	std::string path;
 	std::string fileDividor;
 	Graph<Localidade> graph;
