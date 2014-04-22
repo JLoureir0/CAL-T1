@@ -17,7 +17,6 @@
 class FileReader {
 public:
 	FileReader();
-	virtual ~FileReader();
 	void readFile();
 	void setPath(std::string path);
 	Graph<Localidade> getGraph();

@@ -1,0 +1,58 @@
+Aveiro
+735790
+Braga
+848185
+Coimbra
+429714
+Porto
+2027191
+Vila Real
+213775
+Viseu
+391215
+Connections
+Aveiro
+Braga
+126
+Aveiro
+Coimbra
+63
+Aveiro
+Porto
+77
+Aveiro
+Vila Real
+160
+Aveiro
+Viseu
+87
+Braga
+Coimbra
+172
+Braga
+Porto
+58
+Braga
+Vila Real
+117
+Braga
+Viseu
+178
+Coimbra
+Porto
+123
+Coimbra
+Vila Real
+182
+Coimbra
+Viseu
+92
+Porto
+Vila Real
+98
+Porto
+Viseu
+129
+Vila Real
+Viseu
+97
