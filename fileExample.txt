@@ -1,0 +1,25 @@
+Rio Tinto
+12542
+Gondomar
+145265
+Lamego
+15214
+Trofa
+8756
+Lisboa
+2516845616
+Porto
+1916588468
+Connections
+Rio Tinto
+Gondomar
+15
+Gondomar
+Lamego
+230
+Lamego
+Trofa
+170
+Rio Tinto
+Trofa
+60
