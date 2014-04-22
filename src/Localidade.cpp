@@ -59,10 +59,3 @@ bool Localidade::operator ==(const Localidade &l) const {
 int Localidade::getID() const {
 	return id;
 }
-
-//Localidade::~Localidade() {
-//	delete(&nome);
-//	delete(&populacao);
-//	delete(&unidadeSaude);
-//}
-

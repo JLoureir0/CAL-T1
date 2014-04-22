@@ -5,12 +5,6 @@
  *      Author: Daniel Moreira
  */
 
-#include <iostream>
-#include <cstdio>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <vector>
 #include "FileReader.h"
 #include "Graph.h"
 #include "UI.h"

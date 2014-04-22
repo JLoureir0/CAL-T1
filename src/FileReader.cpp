@@ -6,13 +6,13 @@
  */
 
 #include "FileReader.h"
+#include "Constants.h"
 
 using namespace std;
 
 FileReader::FileReader() {
-  graphviewer = new GraphViewer(600,600,true);
+  graphviewer = new GraphViewer(WINDOW_WIDTH,WINDOW_HEIGHT,true);
   graphviewer->setBackground("background.jpg");
-  graphviewer->createWindow(600, 600);
   graphviewer->defineVertexColor("blue");
   graphviewer->defineEdgeColor("black");
 
@@ -31,12 +31,12 @@ Graph<Localidade> FileReader::getGraph() {
 	return graph;
 }
 
-//FileReader::~FileReader() {
-//	delete(&path);
-//	delete(&fileDividor);
-//	delete(&graph);
-//	delete(&localidades);
-//}
+FileReader::~FileReader() {
+	delete(&path);
+	delete(&fileDividor);
+	delete(&graph);
+	delete(&localidades);
+}
 
 void FileReader::createEdge(string localidade1, string localidade2, string weight) {
 	Localidade source;
@@ -61,6 +61,8 @@ void FileReader::readFile() {
 	string nomeRegiao;
 	ifstream file(path.c_str());
 	bool readingConnections = false;
+
+	graphviewer->createWindow(WINDOW_WIDTH,WINDOW_HEIGHT);
 
 	if (file.is_open()) {
 		while (getline(file, line)) {

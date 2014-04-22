@@ -10,18 +10,14 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include <string>
-#include <cstdlib>
-#include <sstream>
+#include "graphviewer.h"
 #include "Graph.h"
 #include "Localidade.h"
-#include "graphviewer.h"
 
 class FileReader {
 public:
 	FileReader();
-//	virtual ~FileReader();
+	virtual ~FileReader();
 	void readFile();
 	void setPath(std::string path);
 	Graph<Localidade> getGraph();

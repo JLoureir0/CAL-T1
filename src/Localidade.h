@@ -8,14 +8,13 @@
 #ifndef LOCALIDADE_H_
 #define LOCALIDADE_H_
 
-#include <iostream>
+#include <string>
 
 class Localidade {
 public:
 	Localidade();
 	Localidade(int id, std::string nome, unsigned long populacao);
 	Localidade(int id, std::string nome, unsigned long populacao, bool unidadeSaude);
-//	virtual ~Localidade();
 	std::string getNome() const;
 	void setNome(const std::string& nome);
 	unsigned long getPopulacao() const;

@@ -13,9 +13,9 @@ UI::UI(FileReader* fr) {
 	this->fr = fr;
 }
 
-//UI::~UI() {
-//	delete(&fr);
-//}
+UI::~UI() {
+	delete(&fr);
+}
 
 void UI::mainMenu() {
 

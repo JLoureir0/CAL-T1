@@ -9,8 +9,7 @@
 #define UI_H_
 
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include "FileReader.h"
 #include "Localidade.h"
 #include "Graph.h"
@@ -20,7 +19,7 @@ using namespace std;
 class UI {
 public:
 	UI(FileReader* fr);
-//	virtual ~UI();
+	virtual ~UI();
 	void mainMenu();
 	void distributeUnitMenu();
 	void getFilePath();
