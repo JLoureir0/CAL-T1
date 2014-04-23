@@ -175,34 +175,89 @@ public:
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 
 	void drawGraph() const;
+	vector<Vertex<T>*> getVertexInRange(int range) const;
+	void recursivePath(vector<Vertex<T>*> res, Vertex<T>* v, int range, int dist) const;
 };
 
 template<class T>
+vector<Vertex<T>*> Graph<T>::getVertexInRange(int range) const {
+	vector<Vertex<T>*> res;
+
+	for (unsigned int i = 0; i < vertexSet.size(); i++) {
+		vertexSet[i]->visited = false;
+	}
+
+	for (unsigned int i = 0; i < vertexSet.size(); i++) {
+		int dist = 0;
+		Vertex<T>* v = vertexSet[i];
+		recursivePath(res, v, range, dist);
+		for (unsigned int j = 0; j < vertexSet.size(); j++) {
+			vertexSet[j]->visited = false;
+		}
+
+	}
+	return res;
+}
+
+template<class T>
+void Graph<T>::recursivePath(vector<Vertex<T>*> res,  Vertex<T>* v, int range, int dist) const {
+
+	for (unsigned int i = 0; i < v->adj.size(); i++) {
+
+		dist += v->adj[i].weight;
+
+		if (dist < range || v->visited) {
+			v->info.isUnidadeSaude();
+			v->visited = true;
+			Vertex<T>* w = v->adj[i].dest;
+
+
+			if(!w->info.isUnidadeSaude()) {
+
+			bool exist = false;
+			for (unsigned int k = 0; k < res.size(); k++) {
+				if (res[i]->info == w->info) {
+					exist = true;
+				}
+			}
+				if(!exist) {
+					res.push_back(w);
+				}
+			}
+			recursivePath(res, w, range, dist);
+		}
+	}
+}
+
+template<class T>
 void Graph<T>::drawGraph() const {
-	GraphViewer *graphviewer = new GraphViewer(WINDOW_WIDTH,WINDOW_HEIGHT,true);
+	GraphViewer *graphviewer = new GraphViewer(WINDOW_WIDTH, WINDOW_HEIGHT,
+			true);
 	int vertexID = 0;
 	int edgeID = 0;
 
-	graphviewer->createWindow(WINDOW_WIDTH,WINDOW_HEIGHT);
+	graphviewer->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 	graphviewer->setBackground("background.jpg");
 	graphviewer->defineVertexColor("blue");
 	graphviewer->defineEdgeColor("black");
 
 	typename vector<Vertex<T> *>::const_iterator it = vertexSet.begin();
 	typename vector<Vertex<T> *>::const_iterator ite = vertexSet.end();
-	for(;it != ite; it++) {
+	for (; it != ite; it++) {
 		graphviewer->addNode(vertexID);
-		graphviewer->setVertexLabel(vertexID,(*it)->info.getNome());
+		graphviewer->setVertexLabel(vertexID, (*it)->info.getNome());
 		vertexID++;
 	}
 
-	for(int i=0; i < vertexSet.size(); i++) {
-		typename vector<Edge<T> >::const_iterator ited = vertexSet[i]->adj.begin();
-		typename vector<Edge<T> >::const_iterator itede = vertexSet[i]->adj.end();
-		for(;ited != itede; ited++) {
-			for(int j = 0; vertexSet.size();j++) {
-				if((*ited).dest->info == vertexSet[j]->info) {
-					graphviewer->addEdge(edgeID, i, j,EdgeType::UNDIRECTED);
+	for (int i = 0; i < vertexSet.size(); i++) {
+		typename vector<Edge<T> >::const_iterator ited =
+				vertexSet[i]->adj.begin();
+		typename vector<Edge<T> >::const_iterator itede =
+				vertexSet[i]->adj.end();
+		for (; ited != itede; ited++) {
+			for (int j = 0; vertexSet.size(); j++) {
+				if ((*ited).dest->info == vertexSet[j]->info) {
+					graphviewer->addEdge(edgeID, i, j, EdgeType::UNDIRECTED);
 
 					ostringstream weight;
 					weight << ((*ited).weight);
@@ -610,6 +665,7 @@ void Graph<T>::dijkstraShortestPath(const T &s) {
 				make_heap(pq.begin(), pq.end(), vertex_greater_than<T>());
 			}
 		}
+
 	}
 }
 
