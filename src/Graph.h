@@ -33,7 +33,7 @@ const int INT_INFINITY = INT_MAX;
 template<class T>
 class Vertex {
 	T info;
-	vector<Edge<T> > adj;
+
 	bool visited;
 	bool processing;
 	int indegree;
@@ -41,7 +41,7 @@ class Vertex {
 public:
 	Vertex(T in);
 	friend class Graph<T> ;
-	void addEdge(Vertex<T> *dest, double w);
+	void addEdge(Vertex<T> *dest, Vertex<T> * source, double w);
 	bool removeEdgeTo(Vertex<T> *d);
 	T getInfo() const;
 	void setInfo(T info);
@@ -49,6 +49,7 @@ public:
 	int getIndegree() const;
 	bool operator<(const Vertex<T> vertex);
 	Vertex* path;
+	vector<Edge<T> > adj;
 };
 
 template<class T>
@@ -81,8 +82,8 @@ Vertex<T>::Vertex(T in) :
 }
 
 template<class T>
-void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
-	Edge<T> edgeD(dest, w);
+void Vertex<T>::addEdge(Vertex<T> *dest, Vertex<T> * source, double w) {
+	Edge<T> edgeD(dest, source, w);
 	adj.push_back(edgeD);
 }
 
@@ -114,16 +115,17 @@ int Vertex<T>::getIndegree() const {
 template<class T>
 class Edge {
 	Vertex<T> * dest;
+	Vertex<T> * source;
 	double weight;
 public:
-	Edge(Vertex<T> *d, double w);
+	Edge(Vertex<T> *d, Vertex<T> * s, double w);
 	friend class Graph<T> ;
 	friend class Vertex<T> ;
 };
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, double w) :
-		dest(d), weight(w) {
+Edge<T>::Edge(Vertex<T> *d, Vertex<T> * s , double w) :
+		dest(d), source(s) , weight(w) {
 }
 
 /* ================================================================================================
@@ -350,7 +352,7 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
 	if (found != 2)
 		return false;
 	vD->indegree++;
-	vS->addEdge(vD, w);
+	vS->addEdge(vD, vS, w);
 
 	return true;
 }
