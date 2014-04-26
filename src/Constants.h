@@ -11,4 +11,6 @@
 #define WINDOW_HEIGHT 700
 #define WINDOW_WIDTH 800
 
+static stack<int> distances;
+
 #endif /* CONSTANTS_H_ */

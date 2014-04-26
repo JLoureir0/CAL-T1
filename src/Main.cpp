@@ -22,6 +22,9 @@ int main() {
 	cout << "*** Graph Nodes ***" << endl;
 	graph.drawGraph();
 	printNodes();
+	cout << endl << endl;
+	cout << "Range 150" << endl;
+	graph.testRangeFunction();
 	std::string merda;
 	cin >> merda;
 	return 0;
@@ -34,3 +37,5 @@ void printNodes() {
 		cout << "Localidade: " << vertices[i]->getInfo().getNome() << " Populacao: " << vertices[i]->getInfo().getPopulacao() << endl;
 	}
 }
+
+

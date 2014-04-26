@@ -18,7 +18,7 @@ void UI::mainMenu() {
 	while(true) {
 		cout << "*********** Menu ********** \n";
 		cout << "1 -> Distruibuir unidades de saude \n";
-		cout << "2 -> Minimizar a distancia media para desloca��o a uma unidade de sa�de sabendo o numero de unidades de saude \n";
+		cout << "2 -> Minimizar a distancia media para deslocacao a uma unidade de saude sabendo o numero de unidades de saude \n";
 		cout << "3 -> Exit \n";
 		cout << "Insira a opcao que pretende: ";
 
