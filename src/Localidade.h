@@ -9,6 +9,7 @@
 #define LOCALIDADE_H_
 
 #include <string>
+#include <vector>
 
 class Localidade {
 public:
@@ -19,7 +20,7 @@ public:
 	void setNome(const std::string& nome);
 	unsigned long getPopulacao() const;
 	void setPopulacao(unsigned long populacao);
-	bool isUnidadeSaude() const;
+	bool getUnidadeSaude() const;
 	void setUnidadeSaude(bool unidadeSaude);
 	bool operator ==(const Localidade &l) const;
 private:

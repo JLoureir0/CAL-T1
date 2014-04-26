@@ -21,10 +21,18 @@ public:
 	UI(FileReader* fr);
 	void mainMenu();
 	void distributeUnitMenu();
-	void getFilePath();
+	void getFilePath(int mode);
 	void minimizeUnitsMenu();
+	void getMaxDistanceBeetweenHealthUnits();
+	int getRange();
+	int getMaxHealthUnits();
+	int getMenuOption();
+	void getMaxUnits();
 private:
 	FileReader* fr;
+	int range;
+	int maxHealthUnits;
+	int menuOption;
 };
 
 #endif

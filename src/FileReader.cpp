@@ -76,7 +76,6 @@ void FileReader::readFile() {
 			}
 		}
 		file.close();
-		cout << "TAMANHO FODASSE: " << graph.getVertexSet().size() << endl;
 	} else {
 		cout << "Unable to open file \n";
 		exit(1);

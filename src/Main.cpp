@@ -18,15 +18,34 @@ int main() {
 	UI* userInterface = new UI(&fr);
 	userInterface->mainMenu();
 	graph = fr.getGraph();
-	cout << endl << endl;
-	cout << "*** Graph Nodes ***" << endl;
-	graph.drawGraph();
-	printNodes();
-	cout << endl << endl;
-	cout << "Range 150" << endl;
-	graph.testRangeFunction();
-	std::string merda;
-	cin >> merda;
+
+	int mode = userInterface->getMenuOption();
+	switch (mode) {
+		case 1:
+			definedRange = userInterface->getRange();
+			cout << endl << endl;
+			cout << "*** Graph Nodes ***" << endl;
+			graph.drawGraph();
+			printNodes();
+			cout << endl << endl;
+			graph.testRangeFunction();
+			graph.attributeHealthUnits();
+			break;
+		case 2:
+			numMaxUnidadesSaude = userInterface->getMaxHealthUnits();
+			cout << endl << endl;
+			cout << "*** Graph Nodes ***" << endl;
+			graph.drawGraph();
+			printNodes();
+			cout << endl << endl;
+			break;
+		default:
+			break;
+	}
+
+	std::string dontClose;
+	cin >> dontClose;
+
 	return 0;
 }
 

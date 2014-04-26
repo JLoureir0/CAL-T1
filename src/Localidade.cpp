@@ -41,7 +41,7 @@ void Localidade::setPopulacao(unsigned long populacao) {
 	this->populacao = populacao;
 }
 
-bool Localidade::isUnidadeSaude() const {
+bool Localidade::getUnidadeSaude() const {
 	return unidadeSaude;
 }
 

@@ -11,6 +11,9 @@ using namespace std;
 
 UI::UI(FileReader* fr) {
 	this->fr = fr;
+	this->maxHealthUnits = 0;
+	this->range = 0;
+	this->menuOption = 0;
 }
 
 void UI::mainMenu() {
@@ -33,6 +36,7 @@ void UI::mainMenu() {
 				break;
 			case 2:
 				minimizeUnitsMenu();
+				return;
 				break;
 			case 3:
 				cout << "... Closing ... \n";
@@ -42,6 +46,18 @@ void UI::mainMenu() {
 				break;
 		}
 		printf("\n");
+	}
+}
+
+void UI::getMaxDistanceBeetweenHealthUnits() {
+	while(true) {
+		cout << "Insira a distancia / tempo maximo que uma localidade pode distar de uma Unidade de saude \n";
+		int maxDist;
+		cin >> maxDist;
+		if (cin) {  // input was an integer
+			range = maxDist;
+			break;
+		}
 	}
 }
 
@@ -56,7 +72,7 @@ void UI::distributeUnitMenu() {
 
 		switch (option) {
 			case 1:
-				getFilePath();
+				getFilePath(1);
 				return;
 				break;
 			case 2:
@@ -68,14 +84,51 @@ void UI::distributeUnitMenu() {
 	}
 }
 
-void UI::getFilePath() {
+void UI::getFilePath(int mode) {
+	menuOption = mode;
 	cout << "Insira o nome ou caminho do ficheiro a ler \n";
 	string path;
 	cin >> path;
 	fr->setPath(path);
+
+	switch (mode) {
+		case 1:
+			getMaxDistanceBeetweenHealthUnits();
+			break;
+		case 2:
+			getMaxUnits();
+			break;
+		default:
+			break;
+	}
+
 	fr->readFile();
 }
 
 void UI::minimizeUnitsMenu() {
-	return;
+	getFilePath(2);
+}
+
+void UI::getMaxUnits() {
+	while(true) {
+		cout << "Insira o numero maximo de unidades de saude na regiao \n";
+		int max;
+		cin >> max;
+		if (cin) {  // input was an integer
+			maxHealthUnits = max;
+			break;
+		}
+	}
+}
+
+int UI::getRange() {
+	return range;
+}
+
+int UI::getMaxHealthUnits() {
+	return maxHealthUnits;
+}
+
+int UI::getMenuOption() {
+	return menuOption;
 }

@@ -8,9 +8,9 @@
 #include <vector>
 #include <queue>
 #include <list>
-#include <limits.h>
+#include <climits>
 #include <cmath>
-#include <stdio.h>
+#include <cstdio>
 #include <sstream>
 #include <stack>
 
@@ -40,6 +40,7 @@ class Vertex {
 	int indegree;
 	double dist;
 	vector<Edge<T> > adj;
+	vector<Vertex<T>*> reachableWithinRange;
 public:
 	Vertex(T in);
 	friend class Graph<T> ;
@@ -180,7 +181,9 @@ public:
 	void drawGraph() const;
 	vector<Vertex<T>*> getVertexInRange(int range, Vertex<T> * vertex) const;
 	void recursivePath(vector<Vertex<T>*> *res, Vertex<T>* v, int range, Vertex<T> * originalVertex) const;
+	void attributeHealthUnits();
 	void testRangeFunction();
+	vector<Vertex<T>*> sortByReachableLocations(vector<Vertex<T> *> Vertexes);
 };
 
 template<class T>
@@ -237,12 +240,95 @@ void Graph<T>::recursivePath(vector<Vertex<T>*> * res,  Vertex<T>* vertex, int r
 }
 
 template<class T>
+void Graph<T>::attributeHealthUnits() {
+
+	for(unsigned int i = 0; i < vertexSet.size(); i++) {
+		vector<Vertex<T>*> localidades = getVertexInRange(definedRange,vertexSet[i]);
+		vertexSet[i]->reachableWithinRange = localidades;
+	}
+
+	vector<Vertex<T> *> vertexes;
+	vertexes.clear();
+	for(unsigned int i = 0; i < vertexSet.size(); i++) { //Quando nao poder ir para nenhum localidade sendo a distance menor que range colocar unidade de saude
+		if(vertexSet[i]->reachableWithinRange.empty()) {
+			vertexSet[i]->info.setUnidadeSaude(true);
+		}
+		else {
+			vertexes.push_back(vertexSet[i]);
+		}
+	}
+
+	vertexes = sortByReachableLocations(vertexes); // Ordenar o vector pelo numero de localidades onde cada uma consegue chegar
+	cout << endl << " *** Ordered ***" << endl;
+	for(unsigned int i = 0; i < vertexes.size(); i++) {
+		cout << "Position: " << i << " Localidade: " << vertexes[i]->info.getNome() << " number: " << vertexes[i]->reachableWithinRange.size() << endl;
+	}
+
+	for(unsigned int i = 0; i < vertexes.size(); i++) {
+		bool canReachHealthUnit = false;
+		for(unsigned int j = 0; j < vertexes[i]->reachableWithinRange.size(); j++) {
+			if(vertexes[i]->reachableWithinRange[j]->info.getUnidadeSaude()) {
+				canReachHealthUnit = true;
+			}
+		}
+		if(!canReachHealthUnit) {
+			vertexes[i]->info.setUnidadeSaude(true);
+		}
+	}
+
+	cout << endl << endl << "*** Unidades de Saude atribuidas ***" << endl;
+	for(unsigned int i = 0; i < vertexSet.size(); i++) {
+		string hasUnidadeSaude;
+		if(vertexSet[i]->info.getUnidadeSaude())
+			hasUnidadeSaude = "true";
+		else
+			hasUnidadeSaude = "false";
+		cout << "Localidade: " << vertexSet[i]->info.getNome() << " -> Unidade de Saude: " << hasUnidadeSaude << endl;
+	}
+
+	drawGraph();
+}
+
+template<class T>
+vector<Vertex<T>*> Graph<T>::sortByReachableLocations(vector<Vertex<T> *> vertexes) {
+
+	vector<Vertex<T> *> result;
+	int fullSize = vertexes.size();
+	vector<int> positions;
+	positions.clear();
+
+	while(result.size() != fullSize) {
+		unsigned int max_temp = 0;
+		int max_position = -1;
+		for(unsigned int i = 0; i < vertexes.size(); i++) {
+			if(vertexes[i]->reachableWithinRange.size() > max_temp) {
+				bool found = false;
+				for(unsigned int j = 0; j < positions.size(); j++) {
+					if(positions[j] == i) {
+						found = true;
+					}
+				}
+
+				if(!found) {
+					max_temp = vertexes[i]->reachableWithinRange.size();
+					max_position = i;
+				}
+			}
+		}
+		result.push_back(vertexes[max_position]);
+		positions.push_back(max_position);
+	}
+
+	return result;
+}
+
+template<class T>
 void Graph<T>::testRangeFunction() {
 
 	for(unsigned int i = 0; i < vertexSet.size(); i++) {
 		cout << "Vertice: " << vertexSet[i]->info.getNome() << endl;
 		Vertex<T> * l = vertexSet[i];
-		vector<Vertex<T>*> localidades = getVertexInRange(150,l);
+		vector<Vertex<T>*> localidades = getVertexInRange(definedRange,l);
 		for(unsigned int i = 0; i < localidades.size(); i++) {
 			cout << "   - Localidade: " << localidades[i]->getInfo().getNome() << endl;
 		}
@@ -251,12 +337,12 @@ void Graph<T>::testRangeFunction() {
 
 template<class T>
 void Graph<T>::drawGraph() const {
-	GraphViewer *graphviewer = new GraphViewer(WINDOW_WIDTH, WINDOW_HEIGHT, true);
 	int vertexID = 0;
 	int edgeID = 0;
 	vector<int> destinations;
 	vector<int> sources;
 
+	GraphViewer *graphviewer = new GraphViewer(WINDOW_WIDTH, WINDOW_HEIGHT, true);
 	graphviewer->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 	graphviewer->setBackground("background.jpg");
 	graphviewer->defineVertexColor("blue");
@@ -265,6 +351,12 @@ void Graph<T>::drawGraph() const {
 	typename vector<Vertex<T> *>::const_iterator it = vertexSet.begin();
 	typename vector<Vertex<T> *>::const_iterator ite = vertexSet.end();
 	for (; it != ite; it++) {
+
+		if((*it)->info.getUnidadeSaude())
+			graphviewer->setVertexColor(vertexID,"red");
+		else
+			graphviewer->setVertexColor(vertexID,"blue");
+
 		graphviewer->addNode(vertexID);
 		graphviewer->setVertexLabel(vertexID, (*it)->info.getNome());
 		vertexID++;
