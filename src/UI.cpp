@@ -31,11 +31,11 @@ void UI::mainMenu() {
 
 		switch (option) {
 			case 1:
-				distributeUnitMenu();
+				distributeUnitMenu(1);
 				return;
 				break;
 			case 2:
-				minimizeUnitsMenu();
+				distributeUnitMenu(2);
 				return;
 				break;
 			case 3:
@@ -61,7 +61,7 @@ void UI::getMaxDistanceBeetweenHealthUnits() {
 	}
 }
 
-void UI::distributeUnitMenu() {
+void UI::distributeUnitMenu(int mode) {
 	while(true) {
 		cout << "1 -> Carregar de um ficheiro \n";
 		cout << "2 -> Retroceder \n";
@@ -72,7 +72,7 @@ void UI::distributeUnitMenu() {
 
 		switch (option) {
 			case 1:
-				getFilePath(1);
+				getFilePath(mode);
 				return;
 				break;
 			case 2:
@@ -96,7 +96,7 @@ void UI::getFilePath(int mode) {
 			getMaxDistanceBeetweenHealthUnits();
 			break;
 		case 2:
-			getMaxUnits();
+			minimizeUnitsMenu();
 			break;
 		default:
 			break;
@@ -106,7 +106,7 @@ void UI::getFilePath(int mode) {
 }
 
 void UI::minimizeUnitsMenu() {
-	getFilePath(2);
+	getMaxUnits();
 }
 
 void UI::getMaxUnits() {

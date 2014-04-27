@@ -20,7 +20,7 @@ class UI {
 public:
 	UI(FileReader* fr);
 	void mainMenu();
-	void distributeUnitMenu();
+	void distributeUnitMenu(int mode);
 	void getFilePath(int mode);
 	void minimizeUnitsMenu();
 	void getMaxDistanceBeetweenHealthUnits();

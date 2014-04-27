@@ -38,6 +38,7 @@ int main() {
 			graph.drawGraph();
 			printNodes();
 			cout << endl << endl;
+			graph.attributeHealthUnitsStage2();
 			break;
 		default:
 			break;
