@@ -185,7 +185,7 @@ public:
 	void testRangeFunction();
 	vector<Vertex<T>*> sortByReachableLocations(vector<Vertex<T> *> Vertexes);
 	void attributeHealthUnitsStage2();
-	int calculateMedium(vector<Vertex<T> *> vertexes, int position);
+	double calculateMedium(vector<Vertex<T> *> vertexes, int position);
 };
 
 template<class T>
@@ -345,32 +345,24 @@ void Graph<T>::attributeHealthUnitsStage2() {
 
 	for(int i = 0; i < numMaxUnidadesSaude; i++) {
 
-		unsigned long leastValue = INT_MAX + 0.0;
+		double leastValue = 0;
 		int vertexPosition = -1;
 
 		for(unsigned int j = 0; j < vertexSet.size(); j++) {
 
-			cout << endl << endl;
-			unsigned long actualValue = calculateMedium(vertexSet, j);
-			cout << "Media: " << actualValue << endl;
-			if(actualValue < leastValue) {
-				leastValue = actualValue;
-				vertexPosition = j;
-			}
-
-			for(unsigned int k = 0; k < vertexSet.size(); k++) {
-				vertexSet[k]->info.setUnidadeSaude(false);
-			}
-
-			for(unsigned int k = 0; k < unidadesSaude.size(); k++) {
-				vertexSet[unidadesSaude[k]]->info.setUnidadeSaude(true);
+			if(!vertexSet[j]->info.getUnidadeSaude()) {
+				cout << endl << endl;
+				double actualValue = calculateMedium(vertexSet, j);
+				cout << "Media: " << actualValue << endl;
+				if(actualValue < leastValue || leastValue == 0) {
+					leastValue = actualValue;
+					vertexPosition = j;
+				}
 			}
 		}
 
 		cout << "least value: " << leastValue << endl;
 		vertexSet[vertexPosition]->info.setUnidadeSaude(true);
-		unidadesSaude.push_back(vertexPosition);
-
 	}
 
 	cout << endl << endl << "*** Unidades de Saude atribuidas ***" << endl;
@@ -387,12 +379,12 @@ void Graph<T>::attributeHealthUnitsStage2() {
 }
 
 template<class T>
-int Graph<T>::calculateMedium(vector<Vertex<T> *> vertexes, int position) {
+double Graph<T>::calculateMedium(vector<Vertex<T> *> vertexes, int position) {
 
 	vertexes[position]->info.setUnidadeSaude(true);
 	cout << "Localidade " << vertexes[position]->info.getNome() << " has unidade saude" << endl;
 
-	unsigned long medium = 0.0;
+	double medium = 0.0;
 
 	for(unsigned int i = 0; i < vertexes.size(); i++) {
 
@@ -405,17 +397,17 @@ int Graph<T>::calculateMedium(vector<Vertex<T> *> vertexes, int position) {
 				if(vertexes[j]->info.getUnidadeSaude()) {
 					if(vertexes[j]->dist < least_distance) {
 						least_distance = vertexes[j]->dist;
-						population = vertexes[j]->info.getPopulacao();
+						population = vertexes[i]->info.getPopulacao();
 					}
 				}
 			}
 
 			medium = medium + (least_distance*population);
+			cout << "Least distance: " << least_distance << "Pop: " << population << endl;
 		}
 	}
 	cout << "medium: " << medium << endl;
-	medium = medium / vertexes.size();
-	cout << "medium1: " << medium << endl;
+	vertexes[position]->info.setUnidadeSaude(false);
 
 	return medium;
 }
