@@ -432,14 +432,14 @@ void Graph<T>::attributeHealthUnits() {
 		}
 	}
 
-	cout << endl << endl << "*** Unidades de Saude atribuidas ***" << endl;
+	cout << endl << endl << "*** Health Units ***" << endl;
 	for(unsigned int i = 0; i < vertexSet.size(); i++) {
 		string hasHealthUnit;
 		if(vertexSet[i]->info.getHealthUnit())
 			hasHealthUnit = "true";
 		else
 			hasHealthUnit = "false";
-		cout << "Localidade: " << vertexSet[i]->info.getName() << " -> Unidade de Saude: " << hasHealthUnit << endl;
+		cout << "City: " << vertexSet[i]->info.getName() << " -> Health Unit: " << hasHealthUnit << endl;
 	}
 
 	drawGraph();
