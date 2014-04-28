@@ -8,10 +8,11 @@
 #include "FileReader.h"
 #include "Graph.h"
 #include "UI.h"
+#include "City.h"
 
 void printNodes();
 
-Graph<Localidade> graph;
+Graph<City> graph;
 
 int main() {
 	FileReader fr = FileReader();
@@ -28,7 +29,6 @@ int main() {
 			graph.drawGraph();
 			printNodes();
 			cout << endl << endl;
-			graph.testRangeFunction();
 			graph.attributeHealthUnits();
 			break;
 		case 2:
@@ -51,10 +51,10 @@ int main() {
 }
 
 void printNodes() {
-	vector<Vertex<Localidade>*> vertices = graph.getVertexSet();
+	vector<Vertex<City>*> vertices = graph.getVertexSet();
 	cout << "size: " << vertices.size() << endl;
 	for(unsigned int i = 0; i < vertices.size(); i++) {
-		cout << "Localidade: " << vertices[i]->getInfo().getNome() << " Populacao: " << vertices[i]->getInfo().getPopulacao() << endl;
+		cout << "City: " << vertices[i]->getInfo().getName() << " Population: " << vertices[i]->getInfo().getPopulation() << endl;
 	}
 }
 

@@ -13,66 +13,56 @@ using namespace std;
 FileReader::FileReader() {
   path = "";
   fileDividor = "Connections";
-  graph = Graph<Localidade>();
+  graph = Graph<City>();
 }
 
 void FileReader::setPath(string path) {
 	this->path = path;
 }
 
-Graph<Localidade> FileReader::getGraph() {
+Graph<City> FileReader::getGraph() {
 	return graph;
 }
 
-void FileReader::createEdge(string localidade1, string localidade2, string weight) {
-	Localidade source;
-	Localidade destiny;
-	for (unsigned int i = 0; i < localidades.size(); i++) {
-		if (localidades[i].getNome() == localidade1)
-			source = localidades[i];
-		else if (localidades[i].getNome() == localidade2) {
-			destiny = localidades[i];
+void FileReader::createEdge(string city1, string city2, string weight) {
+	City source;
+	City destiny;
+	for (unsigned int i = 0; i < cities.size(); i++) {
+		if (cities[i].getName() == city1)
+			source = cities[i];
+		else if (cities[i].getName() == city2) {
+			destiny = cities[i];
 		}
 	}
-	cout << "before addEdge" << endl;
 	this->graph.addEdge(source, destiny, atof(weight.c_str()));
-	cout << "after addEdge" << endl;
 }
 
 void FileReader::readFile() {
-	cout << "ReadFile" << endl;
+	cout << "Reading File ..." << endl;
 	string line;
-	string nomeRegiao;
+	string regionName;
 	ifstream file(path.c_str());
 	bool readingConnections = false;
 
 	if (file.is_open()) {
 		while (getline(file, line)) {
-			cout << "No while" << endl;
 			if (readingConnections) {
-				cout << "no if" << endl;
-				string localidade2;
+				string city2;
 				string dist;
-				string localidade1 = "" + line;
-				getline(file, localidade2);
+				string city1 = "" + line;
+				getline(file, city2);
 				getline(file, dist);
-				cout << "going to create edge" << endl;
-				createEdge(localidade1, localidade2, dist);
-				cout << "end of if" << endl;
+				createEdge(city1, city2, dist);
 			} else if (line == this->fileDividor) {
 				readingConnections = true;
-				cout << "Going to read Connections" << endl;
 			} else if (!readingConnections) {
-				cout << "no else" << endl;
 				string population;
 				string name = "" + line;
 				getline(file, population);
-				cout << "Localidade: " << name << " " << population << endl;
-				Localidade l = Localidade(name, atol(population.c_str()));
+				City l = City(name, atol(population.c_str()));
 
 				this->graph.addVertex(l);
-				this->localidades.push_back(l);
-				cout << "end of else" << endl;
+				this->cities.push_back(l);
 			}
 		}
 		file.close();

@@ -20,10 +20,10 @@ void UI::mainMenu() {
 
 	while(true) {
 		cout << "*********** Menu ********** \n";
-		cout << "1 -> Distruibuir unidades de saude \n";
-		cout << "2 -> Minimizar a distancia media para deslocacao a uma unidade de saude sabendo o numero de unidades de saude \n";
+		cout << "1 -> Distribute health units \n";
+		cout << "2 -> Minimize the medium distance for the population that has to travel to an health unit for a fixed number of health units \n";
 		cout << "3 -> Exit \n";
-		cout << "Insira a opcao que pretende: ";
+		cout << "Option: ";
 
 		string response;
 		cin >> response;
@@ -51,7 +51,7 @@ void UI::mainMenu() {
 
 void UI::getMaxDistanceBeetweenHealthUnits() {
 	while(true) {
-		cout << "Insira a distancia / tempo maximo que uma localidade pode distar de uma Unidade de saude \n";
+		cout << "Type the maximum distance that a city may be within range: ";
 		int maxDist;
 		cin >> maxDist;
 		if (cin) {  // input was an integer
@@ -63,9 +63,9 @@ void UI::getMaxDistanceBeetweenHealthUnits() {
 
 void UI::distributeUnitMenu(int mode) {
 	while(true) {
-		cout << "1 -> Carregar de um ficheiro \n";
-		cout << "2 -> Retroceder \n";
-		cout << "Insira a opcao que pretende: ";
+		cout << "1 -> Load from a file \n";
+		cout << "2 -> Go back \n";
+		cout << "Option: ";
 		string response;
 		cin >> response;
 		int option = atoi(response.c_str());
@@ -86,7 +86,7 @@ void UI::distributeUnitMenu(int mode) {
 
 void UI::getFilePath(int mode) {
 	menuOption = mode;
-	cout << "Insira o nome ou caminho do ficheiro a ler \n";
+	cout << "File name: ";
 	string path;
 	cin >> path;
 	fr->setPath(path);
@@ -111,7 +111,7 @@ void UI::minimizeUnitsMenu() {
 
 void UI::getMaxUnits() {
 	while(true) {
-		cout << "Insira o numero maximo de unidades de saude na regiao \n";
+		cout << "Type the number of health units that the region must have: ";
 		int max;
 		cin >> max;
 		if (cin) {  // input was an integer

@@ -11,7 +11,6 @@
 #include <iostream>
 #include <cstdlib>
 #include "FileReader.h"
-#include "Localidade.h"
 #include "Graph.h"
 
 using namespace std;

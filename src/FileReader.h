@@ -12,21 +12,21 @@
 #include <fstream>
 #include "graphviewer.h"
 #include "Graph.h"
-#include "Localidade.h"
+#include "City.h"
 
 class FileReader {
 public:
 	FileReader();
 	void readFile();
 	void setPath(std::string path);
-	Graph<Localidade> getGraph();
-	void addLocalidades();
-	void createEdge(string localidade1, string localidade2, string dist);
+	Graph<City> getGraph();
+	void addCitys();
+	void createEdge(string city1, string city2, string dist);
 private:
 	std::string path;
 	std::string fileDividor;
-	Graph<Localidade> graph;
-	std::vector<Localidade> localidades;
+	Graph<City> graph;
+	std::vector<City> cities;
 };
 
 #endif /* FILEREADER_H_ */
